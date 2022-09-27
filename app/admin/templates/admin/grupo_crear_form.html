@@ -1,0 +1,93 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    Crear Grupo
+{% endblock %}
+
+{% block content %}
+
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_top">
+        <tbody>
+            <tr>
+                <td>
+                    <form action="{{ url_for('admin.list_grupos') }}" method="get" novalidate>
+                        <input type="submit" value="Descartar/Volver" />
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_body">
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <tbody>
+                <tr>
+                    <th align="center" valign="middle" colspan="4">
+                        Crear grupo
+                    </th>
+                </tr>
+                <tr align="left" valign="middle">
+                    <td>
+                        {{ form.nombre.label }}
+                    </td>
+                    <td>
+                        {{ form.nombre }}
+                        {% for error in form.nombre.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {{ form.distancia.label }}
+                    </td>
+                    <td>
+                        {{ form.distancia }}
+                        {% for error in form.distancia.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr align="left" valign="middle">
+                    <td>
+                        {{ form.parent_id.label }}
+                    </td>
+                    <td colspan="3">
+                        {{ form.parent_id }}
+                    </td>
+                </tr>
+                <tr align="left" valign="middle">
+                    <td>
+                        {{form.dispositivos.label}}
+                    </td>
+                    <td>
+                        {{form.dispositivos(rows=3, multiple=True) }}
+                        {% for error in form.dispositivos.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {{ form.notas.label }}
+                    </td>
+                    <td>
+                        {{ form.notas }}
+                        {% for error in form.notas.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr align="left" valign="middle">
+                    <td>
+                        {{ form.submit() }}
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </tbody>
+        </form>
+    </table>
+{% endblock %}

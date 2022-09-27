@@ -1,0 +1,39 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    Listado de dispositivos
+{% endblock %}
+
+{% block content %}
+
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_top">
+        <tbody>
+            <tr>
+                <td width="5%">
+                    <form action="{{ url_for('public.index') }}" method="get" novalidate>
+                        <input type="submit" value="Inicio" />
+                    </form>
+                </td>
+                <td width="5%">
+                    <form action="{{ url_for('admin.crear_dispositivo') }}" method="get" novalidate>
+                        <input type="submit" value="Crear Dispositivo" />
+                    </form>
+                </td>
+                <td>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_body">
+        <tbody>
+            {% for dispositivo in dispositivos %}
+            <tr>
+                <td>
+                    <a href="{{ url_for('admin.update_dispositivo_form', dispositivo_id=dispositivo.id) }}">{{ dispositivo.nombre }}</a> (Notas: {{dispositivo.notas}}, Grupo: {{ nombre_grupos[dispositivo.id] }},Posición: {{dispositivo.posicion}})
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

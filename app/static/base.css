@@ -1,0 +1,205 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #00194F;
+}
+/*
+ * Formatting the header area
+ */
+header {
+  background-color: #ffffff;
+  /*background-color: #00194F;*/
+  height: 35px;
+  width: 100%;
+  opacity: .9;
+  margin-bottom: 10px;
+  color: #00194F;
+  /*color: #ffffff;*/
+}
+header h1.logo {
+  margin: 0;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  float: left;
+}
+header h1.logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+/*
+ * Centering the body content
+ */
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 3em;
+  margin-top: 40px;
+  text-align: center;
+  letter-spacing: -2px;
+}
+h3 {
+  font-size: 1.7em;
+  font-weight: 100;
+  margin-top: 30px;
+  text-align: center;
+  letter-spacing: -1px;
+  color: #999;
+}
+.menu {
+  float: right;
+  margin-top: 8px;
+}
+.menu li {
+  display: inline;
+}
+.menu li + li {
+  margin-left: 35px;
+}
+.menu li a {
+  color: #00194F;
+  text-decoration: none;
+}
+
+.tabla1 {
+  background-color: #ffffff;
+  color: #00194F;
+  border: 1px solid #00194F;
+  border-collapse: collapse;
+}
+
+.tabla1 th{
+  border: 1px solid #00194F;
+}
+
+.tabla1 td{
+  border: 1px solid #00194F;
+}
+
+.tabla1 a:link{
+  color: #00194F;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tabla1 a:visited{
+  color: #00194F;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tabla1  a:hover{
+  color: #00194F;
+}
+
+.tabla_body {
+  background-color: #c2c2c7;
+  color: #00194F;
+  border: 1px solid #00194F;
+  border-collapse: collapse;
+}
+
+.tabla_body th{
+  border: 1px solid #00194F;
+}
+
+.tabla_body td{
+  border: 1px solid #00194F;
+}
+
+.tabla_body a:link{
+  color: #00194F;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tabla_body a:visited{
+  color: #00194F;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tabla_body  a:hover{
+  color: #00194F;
+}
+
+.tabla_top {
+  background-color: #ffffff;
+  color: #00194F;
+  border: none;
+}
+
+.boton_1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  background-color: #00194F;
+   background-origin: border-box;
+  box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.boton_1:focus {
+  box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+  outline: 0;
+}
+
+.boton_2 {
+  align-items: center;
+  background-color: #00194F;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+
+.boton_2:hover,
+.boton_2:focus { 
+  background-color: #00194F;
+  color: #ffffff;
+}
+
+.boton_2:active {
+  background: #00194F;
+  color: #ffffff;
+}
+

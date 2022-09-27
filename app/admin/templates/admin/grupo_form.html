@@ -1,0 +1,154 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    {{ grupo.nombre }}
+{% endblock %}
+
+{% block content %}
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_top">
+        <tbody>
+            <tr>
+                <td>
+                    <form action="{{ url_for('admin.list_grupos') }}" method="get" novalidate>
+                        <input type="submit" value="Descartar/Volver" />
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla1">
+        <tbody>
+            <tr>
+                <th align="center" valign="middle" colspan="4">
+                    Detalle del grupo
+                </th>
+            </tr>
+            <tr align="left" valign="middle">
+                <td>
+                    Nombre:
+                </td>
+                <td>
+                    {{ grupo.nombre }}
+                </td>
+                <td>
+                    Distancia:
+                </td>
+                <td>
+                    {{ grupo.distancia }}
+                </td>
+            </tr>
+            <tr align="left" valign="middle">
+                <td>
+                    Grupo padre:
+                </td>
+                <td colspan="3">
+                    {{ grupo_padre}}
+                </td>
+            </tr>
+            <tr align="left" valign="middle">
+                <td>
+                    Dispositivos:
+                </td>
+                <td>
+                    {% for disp in grupo.dispositivos %}
+                        {{ disp.nombre }}</br>
+                    {% endfor %}
+                </td>
+                <td>
+                    Notas:
+                </td>
+                <td>
+                    {{ grupo.notas }}
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+    
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_body">
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <tbody>
+                <tr>
+                    <th align="center" valign="middle" colspan="4">
+                        Actualizar grupo
+                    </th>
+                </tr>
+                <tr align="left" valign="middle">
+                    <td>
+                        {{ form.nombre.label }}
+                    </td>
+                    <td>
+                        {{ form.nombre }}
+                        {% for error in form.nombre.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {{ form.distancia.label }}
+                    </td>
+                    <td>
+                        {{ form.distancia }}
+                        {% for error in form.distancia.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr align="left" valign="middle">
+                    <td>
+                        {{ form.parent_id.label }}
+                    </td>
+                    <td colspan="3">
+                        {{ form.parent_id }}
+                    </td>
+                </tr>
+                <tr align="left" valign="middle">
+                    <td>
+                        {{form.dispositivos.label}}
+                    </td>
+                    <td>
+                        {{form.dispositivos(rows=3, multiple=True) }}
+                        {% for error in form.dispositivos.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {{ form.notas.label }}
+                    </td>
+                    <td>
+                        {{ form.notas }}
+                        {% for error in form.notas.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr align="left" valign="middle">
+                    <td>
+                        {{form.quitar_dispositivos.label}}
+                    </td>
+                    <td>
+                        {{form.quitar_dispositivos}}
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                        {{ form.submit() }}
+                    </td>
+                </tr>
+            </tbody>
+        </form>
+    </table>
+    
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_bottom">
+        <tbody>
+            <tr>
+                <td>
+                    <form action="{{ url_for('admin.delete_grupo', grupo_id=grupo.id) }}" method="post" onSubmit="return confirm('¿Está seguro de querer borrar el grupo?');" novalidate>
+                        <input type="submit" value="Eliminar grupo" />
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+{% endblock %}

@@ -1,0 +1,126 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    {{ dispositivo.nombre }}
+{% endblock %}
+
+{% block content %}
+
+
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_top">
+        <tbody>
+            <tr>
+                <td>
+                    <form action="{{ url_for('admin.list_dispositivos') }}" method="get" novalidate>
+                        <input type="submit" value="Descartar/Volver" />
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla1">
+        <tbody>
+            <tr>
+                <th align="center" valign="middle" colspan="4">
+                    Detalle del dispositivo
+                </th>
+            </tr>
+            <tr align="left" valign="middle">
+                <td>
+                    Nombre:
+                </td>
+                <td>
+                    {{ dispositivo.nombre }}
+                </td>
+                <td>
+                    Posición:
+                </td>
+                <td>
+                    {{ dispositivo.posicion }}
+                </td>
+            </tr>
+            <tr align="left" valign="middle">
+                <td>
+                    Grupo:
+                </td>
+                <td colspan="3">
+                    {{ nombre_grupo }}
+                </td>
+            </tr>
+            <tr align="left" valign="middle">
+                <td>
+                    Notas:
+                </td>
+                <td colspan="3">
+                    {{ dispositivo.notas }}
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+    
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_body">
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <tbody>
+                <tr>
+                    <th align="center" valign="middle" colspan="4">
+                        Actualizar dispositivo
+                    </th>
+                </tr>
+                <tr align="left" valign="middle">
+                    <td>
+                        {{ form.nombre.label }}
+                    </td>
+                    <td>
+                        {{ form.nombre }}
+                        {% for error in form.nombre.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {{ form.posicion.label }}
+                    </td>
+                    <td>
+                        {{ form.posicion }}
+                        {% for error in form.posicion.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr align="left" valign="middle">
+                    <td>
+                        {{ form.notas.label }}
+                    </td>
+                    <td colspan="3">
+                        {{ form.notas }}
+                        {% for error in form.notas.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr align="left" valign="middle">
+                    <td>
+                        {{ form.submit() }}
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+            </tbody>
+        </form>
+    </table>
+    
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_bottom">
+        <tbody>
+            <tr>
+                <td>
+                    <form action="{{ url_for('admin.delete_dispositivo', dispositivo_id=dispositivo.id) }}" method="post" onSubmit="return confirm('¿Está seguro de querer borrar el dispositivo?');" novalidate>
+                        <input type="submit" value="Eliminar dispositivo" />
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

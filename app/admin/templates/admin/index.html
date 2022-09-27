@@ -1,0 +1,22 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    Admin
+{% endblock %}
+
+{% block content %}
+
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_body">
+        <tbody>
+            <tr>
+                <th align="center" valign="middle" >
+                    Usuarios
+                </th>
+            </tr>
+            <tr align="left" valign="middle">
+                <td><a href="{{ url_for('admin.list_users') }}">Usuarios</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

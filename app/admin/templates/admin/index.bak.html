@@ -1,0 +1,20 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    Miniblog | Admin
+{% endblock %}
+
+{% block content %}
+    <ul>
+        <li><a href="{{ url_for('admin.list_users') }}">Usuarios</a></li>
+    </ul>
+    <ul>
+        <li><a href="{{ url_for('admin.list_grupos') }}">Grupos</a></li>
+    </ul>
+    <ul>
+        <li><a href="{{ url_for('admin.list_puntos') }}">Puntos</a></li>
+    </ul>
+    <ul>
+        <li><a href="{{ url_for('admin.list_dispositivos') }}">Dispositivos</a></li>
+    </ul>
+{% endblock %}

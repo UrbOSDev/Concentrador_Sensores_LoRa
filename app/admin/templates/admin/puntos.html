@@ -1,0 +1,39 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    Listado de puntos
+{% endblock %}
+
+{% block content %}
+
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_top">
+        <tbody>
+            <tr>
+                <td width="5%">
+                    <form action="{{ url_for('public.index') }}" method="get" novalidate>
+                        <input type="submit" value="Inicio" />
+                    </form>
+                </td>
+                <td width="5%">
+                    <form action="{{ url_for('admin.crear_punto') }}" method="get" novalidate>
+                        <input type="submit" value="Crear Punto" />
+                    </form>
+                </td>
+                <td>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_body">
+        <tbody>
+            {% for punto in puntos %}
+            <tr>
+                <td>
+                    <a href="{{ url_for('admin.update_punto_form', punto_id=punto.id) }}">{{ punto.nombre }}</a> (Estado: {{punto.estado}})
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

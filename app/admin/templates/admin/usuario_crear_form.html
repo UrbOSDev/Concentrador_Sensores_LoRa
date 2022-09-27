@@ -1,0 +1,98 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    Crear usuario
+{% endblock %}
+
+{% block content %}
+
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_top">
+        <tbody>
+            <tr>
+                <td>
+                    <form action="{{ url_for('admin.list_users') }}" method="get" novalidate>
+                        <input type="submit" value="Descartar/Volver" />
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_body">
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <tbody>
+                <tr>
+                    <th align="center" valign="middle" colspan="4">
+                        Crear usuario
+                    </th>
+                </tr>
+                <tr align="left" valign="middle">
+                    <td>
+                        {{ form.nombre.label }}
+                    </td>
+                    <td>
+                        {{ form.nombre }}
+                        {% for error in form.nombre.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr align="left" valign="middle">
+                    <td>
+                        {{ form.email.label }}
+                    </td>
+                    <td>
+                        {{ form.email }}
+                        {% for error in form.email.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr align="left" valign="middle">
+                    <td>
+                        {{ form.is_admin.label }}
+                    </td>
+                    <td>
+                        {{ form.is_admin }}
+                        {% for error in form.is_admin.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr align="left" valign="middle">
+                    <td>
+                        {{ form.password.label }}
+                    </td>
+                    <td>
+                        {{ form.password }}
+                        {% for error in form.password.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr align="left" valign="middle">
+                    <td>
+                        {{ form.submit() }}
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+            </tbody>
+        </form>
+    </table>
+
+    {% if error %}
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_top">
+        <tbody>
+            <tr>
+                <td>
+                    <p style="color: red;"><strong>Error:</strong> {{ error }}</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base_template.html" %}
+
+{% block title %}Concentrador y pasarela UrbOS{% endblock %}
+
+{% block content %}
+
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla1">
+        <tbody>
+            <tr>
+                <th align="center" valign="middle" colspan="3">
+                    Grupos, Puntos y Dispositivos
+                </th>
+            </tr>
+            <tr align="center" valign="middle">
+                <td width="33%"><a href="{{ url_for('admin.list_grupos') }}">Grupos</a></td>
+                <td width="34%"><a href="{{ url_for('admin.list_puntos') }}">Puntos</a></td>
+                <td width="33%"><a href="{{ url_for('admin.list_dispositivos') }}">Dispositivos</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table cellspacing="2" cellpadding="2" width="100%">
+        <tbody>
+            <tr align="center" valign="middle">
+                <td>
+                    </br>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_body">
+        <tbody>
+            <tr>
+                <th align="center" valign="middle">
+                    Mediciones
+                </th>
+            </tr>
+            {% for calculo in calculos.items %}
+            <tr align="left" valign="middle">
+                <td>
+                    <a href="{{ url_for('public.show_calculo', cid=calculo.id) }}">{{ calculo.rango }} <span>({{ calculo.created|datetime('fecha_hora') }})</span></a>
+                </td>
+            </tr>
+            {% else %}
+            <tr align="left" valign="middle">
+                <td>No hay Calculos</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class=pagination>
+        {%- for page in calculos.iter_pages() %}
+            {% if page %}
+                {% if page != calculos.page %}
+                    <a href="{{ url_for('public.index', page=page) }}">{{ page }}</a>
+                {% else %}
+                    <strong>{{ page }}</strong>
+                {% endif %}
+            {% else %}
+                <span class=ellipsis>…</span>
+            {% endif %}
+        {%- endfor %}
+    </div>
+{% endblock %}

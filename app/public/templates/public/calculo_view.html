@@ -1,0 +1,48 @@
+{% extends "base_template.html" %}
+
+{% block title %}{{ calculo.nombre }}{% endblock %}
+
+{% block content %}
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_body">
+        <tbody>
+            <tr>
+                <th align="center" valign="middle" colspan="2">
+                    Cálculo/Medición
+                </th>
+            </tr>
+            <tr align="left" valign="middle">
+                <td>
+                    Identificación:
+                </td>
+                <td>
+                    {{ calculo.nombre }}
+                </td>
+            </tr>
+            <tr align="left" valign="middle">
+                <td>
+                    Rango:
+                </td>
+                <td>
+                    {{ calculo.rango }}
+                </td>
+            </tr>
+            <tr align="left" valign="middle">
+                <td>
+                    Fecha creación UTC:
+                </td>
+                <td>
+                    {{ calculo.created|datetime('fecha_hora') }}
+                </td>
+            </tr>
+            <tr align="left" valign="middle">
+                <td>
+                    Grupo:
+                </td>
+                <td>
+                    {{ grupo.nombre }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

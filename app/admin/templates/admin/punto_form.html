@@ -1,0 +1,108 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    {{ punto.nombre }}
+{% endblock %}
+
+{% block content %}
+
+
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_top">
+        <tbody>
+            <tr>
+                <td>
+                    <form action="{{ url_for('admin.list_puntos') }}" method="get" novalidate>
+                        <input type="submit" value="Descartar/Volver" />
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla1">
+        <tbody>
+            <tr>
+                <th align="center" valign="middle" colspan="4">
+                    Detalle del punto
+                </th>
+            </tr>
+            <tr align="left" valign="middle">
+                <td>
+                    Nombre:
+                </td>
+                <td>
+                    {{ punto.nombre }}
+                </td>
+                <td>
+                    Estado:
+                </td>
+                <td>
+                    {{ punto.estado}}
+                </td>
+            </tr>
+            <tr align="left" valign="middle">
+                <td>
+                    Notas:
+                </td>
+                <td colspan="3">
+                    {{ punto.notas }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_body">
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <tbody>
+                <tr>
+                    <th align="center" valign="middle" colspan="4">
+                        Actualizar punto
+                    </th>
+                </tr>
+                <tr align="left" valign="middle">
+                    <td>
+                        {{ form.nombre.label }}
+                    </td>
+                    <td>
+                        {{ form.nombre }}
+                        {% for error in form.nombre.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr align="left" valign="middle">
+                    <td>
+                        {{ form.notas.label }}
+                    </td>
+                    <td>
+                        {{ form.notas }}
+                        {% for error in form.notas.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr align="left" valign="middle">
+                    <td>
+                        {{ form.submit() }}
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+            </tbody>
+        </form>
+    </table>
+    
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_bottom">
+        <tbody>
+            <tr>
+                <td>
+                    <form action="{{ url_for('admin.delete_punto', punto_id=punto.id) }}" method="post" onSubmit="return confirm('¿Está seguro de querer borrar el punto?');" novalidate>
+                        <input type="submit" value="Eliminar punto" />
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

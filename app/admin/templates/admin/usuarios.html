@@ -1,0 +1,40 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    Listado de usuarios
+{% endblock %}
+
+{% block content %}
+
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_top">
+        <tbody>
+            <tr>
+                <td width="5%">
+                    <form action="{{ url_for('admin.index') }}" method="get" novalidate>
+                        <input type="submit" value="Admin" />
+                    </form>
+                </td>
+                <td width="5%">
+                    <form action="{{ url_for('admin.crear_usuario') }}" method="get" novalidate>
+                        <input type="submit" value="Crear usuario" />
+                    </form>
+                </td>
+                <td>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table cellspacing="0" cellpadding="1" width="100%" class="tabla_body">
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>
+                    <a href="{{ url_for('admin.update_user_form', user_id=user.id) }}">{{ user.name }}</a> (Admin: {{ user.is_admin}})
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
