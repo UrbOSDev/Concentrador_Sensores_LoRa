@@ -1,4 +1,4 @@
-# conentrador_lora
+# Concentrador LoRa
 ### Concentrador Sensores LoRa
 
 Este concentrador recibe las señales de los Sensores Geomagnéticos LoRa y las almacena en una base de datos.
